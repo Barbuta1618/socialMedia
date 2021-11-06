@@ -5,13 +5,14 @@ app = Flask(__name__)
 
 @app.route('/likestime', methods = ['GET'])
 def index():
-    likes = likesTime.likesTime()
-    hours = []
-    for i in range(23):
-        hours.append(i)
+    (likes, shares, comms) = likesTime.likesTime()
 
-    data = dict(zip(hours, likes)) 
-    print(data)
+    data = {
+        "likes": likes,
+        "shares": shares,
+        "comms": comms
+    }
+    
     return data
 
 
